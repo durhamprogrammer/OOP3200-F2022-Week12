@@ -1,5 +1,7 @@
 package core;
 
+import java.util.List;
+
 public class Vector2
 {
     // Private Instance Variables

@@ -3,6 +3,8 @@ package objects;
 import core.Shape;
 import core.Vector2;
 
+import java.util.Iterator;
+
 public class Polygon extends Shape
 {
     // Parameterized Constructor

@@ -2,10 +2,10 @@ package core;
 
 import java.util.ArrayList;
 
-public abstract class Shape
+public abstract class Shape extends ArrayList<Vector2>
 {
     // private instance members
-    protected ArrayList<Vector2> vertices;
+    //protected ArrayList<Vector2> vertices;
     private ArrayList<Line> edges;
 
     // public properties
@@ -23,11 +23,13 @@ public abstract class Shape
     // constructor(s)
     public Shape()
     {
+        super();
         initialize();
     }
 
     public Shape(Vector2[] vertices)
     {
+        super();
         initialize();
         setVertices(vertices);
     }
@@ -35,32 +37,32 @@ public abstract class Shape
     // private methods
     private void initialize()
     {
-        vertices = new ArrayList<Vector2>(); // creates an empty container
+        //vertices = new ArrayList<Vector2>(); // creates an empty container
         edges = new ArrayList<Line>(); // creates an empty container
     }
 
 
     private void build(Vector2[] vertices)
     {
-        this.vertices.clear();
+        this.clear();
         this.edges.clear();
 
         // add all vertices to the shape
         for (int i = 0; i < vertices.length; i++)
         {
-            this.vertices.add(vertices[i]);
+            this.add(vertices[i]);
         }
 
         // build edges
-        for (int i = 0; i < this.vertices.size(); i++)
+        for (int i = 0; i < this.size(); i++)
         {
-            if(i < this.vertices.size() - 1)
+            if(i < this.size() - 1)
             {
-                this.edges.add(new Line(this.vertices.get(i), this.vertices.get(i + 1)));
+                this.edges.add(new Line(this.get(i), this.get(i + 1)));
             }
             else
             {
-                this.edges.add(new Line(this.vertices.get(i), this.vertices.get(0)));
+                this.edges.add(new Line(this.get(i), this.get(0)));
             }
         }
     }
@@ -74,7 +76,7 @@ public abstract class Shape
         outputString += "-------------------------\n";
         outputString += " Vertices: \n";
         outputString += "-------------------------\n";
-        for (var vertex : vertices)
+        for (var vertex : this)
         {
             outputString += vertex.toString() + "\n";
         }
